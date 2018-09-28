@@ -13,12 +13,15 @@
   // var publicKey = new Uint8Array(<%#= WebpushClient.public_key %>);
 </script>
 <script type="text/javascript">
+
+
 	ready();
 	function ready() {
 	  if (navigator.serviceWorker) {
 	    console.log('Registering serviceworker');
-	    navigator.serviceWorker.register('serviceworker.js')
+	    navigator.serviceWorker.register('/serviceworker.js.erb')
 	      .then(function(reg) {
+	      	console.log(reg)
 	        console.log(reg.scope, 'register');
 	        console.log('Service worker change, registered the service worker');
 	  		setup(logSubscription);
@@ -101,7 +104,7 @@
 	function getSubscription() {
 	  return navigator.serviceWorker.ready
 	  .then((serviceWorkerRegistration) => {
-	    return serviceWorkerRegistration.pushManager.getSubscription()
+	    return serviceWorkerRegistration.pushManager.getSubscription()	
 	    .catch((error) => {
 	      console.warn('Error during getSubscription()', error);
 	    });
@@ -138,5 +141,6 @@
 
 	function authenticityToken() {
 	  return document.querySelector('meta[name=csrf-token]').content;
-	}
+	}	
+
 </script>

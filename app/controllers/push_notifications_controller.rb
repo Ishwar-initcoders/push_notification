@@ -1,10 +1,10 @@
 class PushNotificationsController < ApplicationController
 
   def create
-
-
     puts "Sending push notification from #{push_params.inspect}"
+
     subscription_params = fetch_subscription_params
+    
     WebpushJob.perform_later fetch_message,
       endpoint: subscription_params[:endpoint],
       p256dh: subscription_params.dig(:keys, :p256dh),

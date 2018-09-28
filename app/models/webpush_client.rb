@@ -1,3 +1,4 @@
+require 'webpush'
 class WebpushClient
   def self.public_key
     return ENV['VAPID_PUBLIC_KEY']
@@ -28,17 +29,19 @@ class WebpushClient
     puts("p256dh: #{p256dh}")
     puts("auth: #{auth}")
 
+    puts("public_key_bytes #{public_key}")
+    puts("private_key #{private_key}")
+    
     Webpush.payload_send(
       message: message,
       endpoint: endpoint,
       p256dh: p256dh,
       auth: auth,
       vapid: {
-        subject: "mailto:gehlotishwar@gmail.com",
-        public_key: ENV['VAPID_PUBLIC_KEY'],
-        private_key: ENV['VAPID_PRIVATE_KEY']
-      }
-      )
+        subject: "mailto:ishwar@initcoders.com",
+        public_key: public_key.to_s,
+        private_key: private_key.to_s
+      })
   end
 
   def public_key
