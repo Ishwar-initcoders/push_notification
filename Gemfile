@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 
-
+gem "jquery-rails"
 gem "serviceworker-rails", github: "rossta/serviceworker-rails", branch: "master"
 gem "webpush"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
