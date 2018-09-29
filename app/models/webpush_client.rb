@@ -19,6 +19,31 @@ class WebpushClient
   # @option subscription_params [String] :endpoint url to send encrypted message
   # @option subscription_params [Hash<Symbol, String>] :keys auth keys to send with message for decryption
   # @return true/false
+  # def send_notification(message, endpoint: "", p256dh: "", auth: "")
+  #   raise ArgumentError, ":endpoint param is required" if endpoint.blank?
+  #   raise ArgumentError, "subscription :keys are missing" if p256dh.blank? || auth.blank?
+
+  #   puts("Sending WebPush notification...............")
+  #   puts("message: #{message}")
+  #   puts("endpoint: #{endpoint}")
+  #   puts("p256dh: #{p256dh}")
+  #   puts("auth: #{auth}")
+
+  #   puts("public_key_bytes #{public_key}")
+  #   puts("private_key #{private_key}")
+    
+  #   Webpush.payload_send(
+  #     message: message,
+  #     endpoint: endpoint,
+  #     p256dh: p256dh,
+  #     auth: auth,
+  #     vapid: {
+  #       subject: "mailto:ishwar@initcoders.com",
+  #       public_key: public_key.to_s,
+  #       private_key: private_key.to_s
+  #     })
+  # end
+
   def send_notification(message, endpoint: "", p256dh: "", auth: "")
     raise ArgumentError, ":endpoint param is required" if endpoint.blank?
     raise ArgumentError, "subscription :keys are missing" if p256dh.blank? || auth.blank?
@@ -34,9 +59,9 @@ class WebpushClient
     
     Webpush.payload_send(
       message: message,
-      endpoint: endpoint,
-      p256dh: p256dh,
-      auth: auth,
+      endpoint: "https://updates.push.services.mozilla.com/wpush/v1/gAAAAABbrxL7ZNNpDIr_25Q9b2ZTNguKjk4DPBgG79VsQj1s-iEjAzN5HOlqo01QY4rkHu3JNh--maAKN4S_cgsZKvu_EJV0dcqHG6lBSawIdOSHgOJ5Znr8aKEMGT7ApaLdtAPSFkZT",
+      p256dh: "BOdcTVoccAnDzmiS0xCX4ezEy7ui5RTkfcyVE-HQ9E83uVICJc_UEH7ICNfJ-VyQZRVB1apbgyt-1oKMTVENI9I",
+      auth: "5z4n40-jdCBrZA-Edua-2Q",
       vapid: {
         subject: "mailto:ishwar@initcoders.com",
         public_key: public_key.to_s,

@@ -14,8 +14,8 @@
 </script>
 <script type="text/javascript">
 
-
 	ready();
+	
 	function ready() {
 	  if (navigator.serviceWorker) {
 	    console.log('Registering serviceworker');
@@ -30,6 +30,31 @@
 	    alertSWSupport();
 	  }
 	}
+
+//  alert once .js file start
+	function alertOnce(labelSuffix, message) {
+	  if (!localStorage) {
+	    alert(message);
+	    return false;
+	  }
+
+	  const label = `alerted-${labelSuffix}`;
+	  const alerted = localStorage.getItem(label) || '';
+
+	  if (alerted != "yes") {
+	    localStorage.setItem(label, 'yes');
+	    alert(message);
+	  }
+
+	  return true;
+	}
+
+	function alertSWSupport() {
+	  return alertOnce("serviceWorker", "Sorry but the browser you're using does not support Service Workers yet! Check out caniuse.com to learn moreabout browser support");
+	}
+// alert once .js file end
+
+
 
 	function setup(onSubscribed) {
 	  console.log('Setting up push subscription');
