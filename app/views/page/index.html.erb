@@ -33,20 +33,19 @@
 	
 
 	function ready(){
-		navigator.serviceWorker.ready.then(function(sw) {
-		  Notification.requestPermission(function(permission) {
-		    if(permission !== 'denied') {
-		      sw.pushManager.subscribe({userVisibleOnly: true}).then(function(s) {
-		        var data = {
-		          endpoint: s.endpoint,
-		          p256dh: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('p256dh')))).replace(/\+/g, '-').replace(/\//g, '_'),
-		          auth: btoa(String.fromCharCode.apply(null, new Uint8Array(s.getKey('auth')))).replace(/\+/g, '-').replace(/\//g, '_')
-		        }
-		        console.log(data);
-		      });
-		    }
-		  });
-		});
+		if (navigator.serviceWorker) {
+    		console.log("ServiceWorkers are supported");
+		    navigator.serviceWorker.register('serviceworker.js')
+	        .then(function(reg) {
+	            console.log("ServiceWorker registered ◕‿◕");
+	            console.dir(reg);
+	            setup(logSubscription);
+	        })
+	        .catch(function(error) {
+	            console.log("Failed to register ServiceWorker ಠ_ಠ");
+	            console.dir(error);
+	        });
+		}
 	}
 
 

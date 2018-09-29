@@ -35,7 +35,7 @@ class WebpushClient
     
     Webpush.payload_send(
       message: message,
-      endpoint: endpoint,
+      endpoint: endpoint.gsub('https://android.googleapis.com/gcm/send', 'https://gcm-http.googleapis.com/gcm'),
       p256dh: p256dh,
       auth: auth,
       api_key: "AIzaSyD1BtA_Nr2cLGsOWOfGaaVeGdugMxBXvXs",
