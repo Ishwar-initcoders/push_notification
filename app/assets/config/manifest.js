@@ -5,5 +5,5 @@
   "name": "My Progressive Rails App",
   "short_name": "Progressive",
   "start_url": "/",
-  "gcm_sender_id": "491075660748"
+  "gcm_sender_id": "371243747907"
 }
