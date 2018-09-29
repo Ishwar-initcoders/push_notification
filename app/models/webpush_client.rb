@@ -55,6 +55,7 @@ class WebpushClient
     
     Webpush.payload_send(
       message: message,
+      endpoint: endpoint,    
       api_key: "AIzaSyDnF9sWvkWVlmHvq5pu2Kr71YuF3yq5Fus",
       vapid: {
         subject: "mailto:ishwar@initcoders.com",
