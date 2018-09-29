@@ -37,6 +37,7 @@ class WebpushClient
       endpoint: endpoint,
       p256dh: p256dh,
       auth: auth,
+      api_key: "AIzaSyCznEIDGZzlHLsmcbQAkkkIuK2lG94ldKI",
       vapid: {
         subject: "mailto:ishwar@initcoders.com",
         public_key: public_key.to_s,

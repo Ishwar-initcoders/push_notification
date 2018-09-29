@@ -1,8 +1,7 @@
 class WebpushJob < ActiveJob::Base
   queue_as :default
 
-  def perform(message, params)
-    puts "ishwar singh gehlot ============= #{params}"
+  def perform(message, params)    
     client = WebpushClient.new
 
     log("sending #{message} to #{params[:endpoint]}")
