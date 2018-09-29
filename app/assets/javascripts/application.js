@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require serviceworker-companion
 
 // if (navigator.serviceWorker) {
 //   navigator.serviceWorker.register('/serviceworker.js', { scope: './' })
