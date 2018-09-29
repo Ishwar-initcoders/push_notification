@@ -16,20 +16,39 @@
 
 	ready();
 	
-	function ready() {
-	  if (navigator.serviceWorker) {
-	    console.log('Registering serviceworker');
-	    navigator.serviceWorker.register('/serviceworker.js.erb')
-	      .then(function(reg) {
-	      	console.log(reg)
-	        console.log(reg.scope, 'register');
-	        console.log('Service worker change, registered the service worker');
-	  		setup(logSubscription);
-	      });
-	  } else {
-	    alertSWSupport();
-	  }
+	// function ready() {
+	//   if (navigator.serviceWorker) {
+	//     console.log('Registering serviceworker');
+	//     navigator.serviceWorker.register('/serviceworker.js.erb')
+	//       .then(function(reg) {
+	//       	console.log(reg)
+	//         console.log(reg.scope, 'register');
+	//         console.log('Service worker change, registered the service worker');
+	//   		setup(logSubscription);
+	//       });
+	//   } else {
+	//     alertSWSupport();
+	//   }
+	// }
+	
+
+	function ready(){
+		if (navigator.serviceWorker) {
+    		console.log("ServiceWorkers are supported");
+		    navigator.serviceWorker.register('serviceworker.js')
+	        .then(function(reg) {
+	            console.log("ServiceWorker registered ◕‿◕");
+	            console.dir(reg);
+	            setup(logSubscription);
+	        })
+	        .catch(function(error) {
+	            console.log("Failed to register ServiceWorker ಠ_ಠ");
+	            console.dir(error);
+	        });
+		}
 	}
+
+
 
 //  alert once .js file start
 	function alertOnce(labelSuffix, message) {

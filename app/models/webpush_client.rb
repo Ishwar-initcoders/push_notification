@@ -19,24 +19,43 @@ class WebpushClient
   # @option subscription_params [String] :endpoint url to send encrypted message
   # @option subscription_params [Hash<Symbol, String>] :keys auth keys to send with message for decryption
   # @return true/false
-  def send_notification(message, endpoint: "", p256dh: "", auth: "")
-    raise ArgumentError, ":endpoint param is required" if endpoint.blank?
-    raise ArgumentError, "subscription :keys are missing" if p256dh.blank? || auth.blank?
+
+  # def send_notification(message, endpoint: "", p256dh: "", auth: "")
+  #   raise ArgumentError, ":endpoint param is required" if endpoint.blank?
+  #   raise ArgumentError, "subscription :keys are missing" if p256dh.blank? || auth.blank?
+
+  #   puts("Sending WebPush notification...............")
+  #   puts("message: #{message}")
+  #   puts("endpoint: #{endpoint}")
+  #   puts("p256dh: #{p256dh}")
+  #   puts("auth: #{auth}")
+
+  #   puts("public_key_bytes #{public_key}")
+  #   puts("private_key #{private_key}")
+    
+  #   Webpush.payload_send(
+  #     message: message,
+  #     endpoint: endpoint,
+  #     p256dh: p256dh,
+  #     auth: auth,
+  #     api_key: "AIzaSyDnF9sWvkWVlmHvq5pu2Kr71YuF3yq5Fus",
+  #     vapid: {
+  #       subject: "mailto:ishwar@initcoders.com",
+  #       public_key: public_key.to_s,
+  #       private_key: private_key.to_s
+  #     })
+  # end
+
+  def send_notification(message, endpoint)
 
     puts("Sending WebPush notification...............")
     puts("message: #{message}")
-    puts("endpoint: #{endpoint}")
-    puts("p256dh: #{p256dh}")
-    puts("auth: #{auth}")
-
     puts("public_key_bytes #{public_key}")
     puts("private_key #{private_key}")
     
     Webpush.payload_send(
       message: message,
-      endpoint: endpoint,
-      p256dh: p256dh,
-      auth: auth,
+      api_key: "AIzaSyDnF9sWvkWVlmHvq5pu2Kr71YuF3yq5Fus",
       vapid: {
         subject: "mailto:ishwar@initcoders.com",
         public_key: public_key.to_s,

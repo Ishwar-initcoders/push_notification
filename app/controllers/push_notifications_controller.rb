@@ -6,9 +6,9 @@ class PushNotificationsController < ApplicationController
     subscription_params = fetch_subscription_params
     
     WebpushJob.perform_later fetch_message,
-      endpoint: subscription_params[:endpoint],
-      p256dh: subscription_params.dig(:keys, :p256dh),
-      auth: subscription_params.dig(:keys, :auth)
+      endpoint: subscription_params[:endpoint]
+      # p256dh: subscription_params.dig(:keys, :p256dh),
+      # auth: subscription_params.dig(:keys, :auth)
 
     head :ok
   end

@@ -33,6 +33,7 @@ function onActivate(event) {
   );
 }
 
+
 function onPush(event) { 
   console.log("[Serviceworker] Received push message", event);
   var title_name = (event.data && event.data.text()) || "Yay a message";
@@ -44,6 +45,7 @@ function onPush(event) {
     self.registration.showNotification(title_name, { body, icon, tag })
   )
 }
+
 
 self.addEventListener('install', onInstall)
 self.addEventListener('activate', onActivate)
